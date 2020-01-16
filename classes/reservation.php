@@ -32,7 +32,7 @@ class reservation {
         $dateDiffMinus = date('yy/m/d H:i', strtotime($this->datetime .'+4 hours'));
         $dateDiffPlus = date('yy/m/d H:i', strtotime($this->datetime .'-4 hours'));
        // $vysledek = database::query('SELECT datetime FROM reservationinfo WHERE datetime BETWEEN "2020-01-14 10:00:00" AND "2020-01-14 14:00:00"');
-        $vysledek = database::query('SELECT * FROM reservationinfo WHERE datetime BETWEEN "$dateDiffPlus" AND "$dateDiffMinus"');
+        $vysledek = database::query('SELECT * FROM reservationinfo WHERE datetime BETWEEN '.$dateDiffPlus.' AND '.$dateDiffMinus);
         $array = $vysledek->fetchAll();
         print_r($array);
         var_dump($this->datetime);
