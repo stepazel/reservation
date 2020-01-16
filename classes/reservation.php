@@ -29,29 +29,13 @@ class reservation {
     }
 
     private function freeDate () {
-        $dateDiffMinus = date('yy/m/d H:i', strtotime($this->datetime .'+4 hours'));
-        $dateDiffPlus = date('yy/m/d H:i', strtotime($this->datetime .'-4 hours'));
-       // $vysledek = database::query('SELECT datetime FROM reservationinfo WHERE datetime BETWEEN "2020-01-14 10:00:00" AND "2020-01-14 14:00:00"');
-        $vysledek = database::query('SELECT * FROM reservationinfo WHERE datetime BETWEEN '.$dateDiffPlus.' AND '.$dateDiffMinus);
-        $array = $vysledek->fetchAll();
-        print_r($array);
-        var_dump($this->datetime);
-        var_dump($dateDiffMinus);
-        var_dump($dateDiffPlus);
-
-        /*foreach ($array as $value) {
-            $dbDate = new DateTime($value);
-            $interval = $formDate->diff($dbDate)->format('%R%h hours');
-            if ($interval >= -4 AND $interval <= 4) {
-                return false;
-            }
-        $sql = 'SELECT datetime FROM reservationinfo WHERE TIMEDIFF(datetime, $_POST["datetime"]) < 4 ';
-        $vysledek = database::query($sql);
+        $dateDiffMinus = date('yy-m-d H:i:s', strtotime($this->datetime .'+4 hours'));
+        $dateDiffPlus = date('yy-m-d H:i:s', strtotime($this->datetime .'-4 hours'));
+        $vysledek = database::query("SELECT datetime FROM reservationinfo WHERE datetime BETWEEN '". $dateDiffPlus ."' AND '". $dateDiffMinus ."'");
         $array = $vysledek->fetchAll(PDO::FETCH_COLUMN);
-        $formDate = new DateTime($this->datetime);
-        print_r($array);
-        }
-        return true;*/
+        if (empty($array)) {
+            return true;
+        } else return false;
     }
 
     public function ifFreeDate () {
