@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-</head>
-</html>
-
 <?php
 
 
@@ -16,6 +8,12 @@ database::connect(database::selectHost(), database::selectUser(), database::sele
 class admin {
     public $email;
     public $password;
+
+    public function checkLogin ($pageRedirect) {
+        if (!isset($_SESSION['email'])) {
+            header('Location: reservationLogin.php');
+        }
+    }
 
     public function newUser($email, $password) {
         $this->email = $email;
@@ -44,19 +42,19 @@ class admin {
 
     }
 
-    public function checkLogin ($pageRedirect) {
-        if (isset($_SESSION['email'])) {
-            return true;
-        } else {
-            header('Location: '.$pageRedirect);
-            return false;
-        }
-    }
+
 
     public function displayTable () {
         $data = database::query('SELECT * FROM reservationinfo');
         $table = $data->fetchAll(PDO::FETCH_ASSOC);
-        echo '<div class="container">
+        echo '<!DOCTYPE html>
+            <html>
+            <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                <link rel="stylesheet" type="text/css" href="styles/style.css">
+            </head>
+            </html>
+            <div class="container">
                 <table class="table"><thead>
                 <tr>
                 <th>Jméno</th>
