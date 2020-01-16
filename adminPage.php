@@ -17,6 +17,6 @@ database::connect(database::selectHost(), database::selectUser(), database::sele
 $admin = new admin();
 $admin->checkLogin('reservationLogin.php');
 $admin->displayTable();
-//$admin->updateApproved();
+$admin->updateApproved();
 
 
