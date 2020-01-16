@@ -64,8 +64,8 @@ class admin {
         foreach ($table as $array => $value) {
             echo '<tr><td>'.$value['name'].'</td><td>'.$value['email'].'</td><td>'.$value['datetime'].'</td>
                     <td>'.$value['place'].'</td><td>'.$value['created'].'</td><td>'.$value['approved'].'</td>
-                    <td><a href="adminPage.php?id='.$value['id'].'&app='.$value['approved'].'">Schválit</a> / 
-                    <a href="adminPage.php?id='.$value['id'].'&app='.$value['approved'].'">Zamítnout</a></td></tr>' ;
+                    <td><a href="adminPage.php?id='.$value['id'].'&app=1">Schválit</a> / 
+                    <a href="adminPage.php?id='.$value['id'].'&app=0">Zamítnout</a></td></tr>' ;
         }
         echo '</tbody></table></div>';
     }
