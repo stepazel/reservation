@@ -55,7 +55,7 @@ database::connect(database::selectHost(), database::selectUser(), database::sele
         <h2>DayDreams</h2>
         <p>Zarezervujte si naši kapelu právě na vaši akci:</p>
     </div>
-    <form action="/reservation/reservationToDatabase.php" method="post">
+    <form action="reservationToDatabase.php" method="post">
         <div class="form-group">
             <label for="name">Celé jméno</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Zadejte vaše jméno">

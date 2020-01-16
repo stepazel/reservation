@@ -44,6 +44,15 @@ class admin {
 
     }
 
+    public function checkLogin ($pageRedirect) {
+        if (isset($_SESSION['email'])) {
+            return true;
+        } else {
+            header('Location: '.$pageRedirect);
+            return false;
+        }
+    }
+
     public function displayTable () {
         $data = database::query('SELECT * FROM reservationinfo');
         $table = $data->fetchAll(PDO::FETCH_ASSOC);

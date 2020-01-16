@@ -9,8 +9,8 @@ function loadClass($class) {
 spl_autoload_register('loadClass');
 
 
-$registrace = new admin;
-$registrace->loginUser();
+$admin = new admin;
+$admin->loginUser();
 ?>
 <!DOCTYPE html>
 <html lang="cs">
@@ -29,10 +29,10 @@ $registrace->loginUser();
 
 <div class="container">
     <h2>Příhlášení do rezervačního systému DayDreams</h2>
-    <form action="adminPage.php" method="post">
+    <form action="" method="post">
         <div class="form-group">
-            <label for="email">Username</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Zadejte své přihlašovací jméno">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Zadejte svůj e-mail">
         </div>
         <div class="form-group">
             <label for="password">Heslo</label>
