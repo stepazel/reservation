@@ -18,6 +18,8 @@ class reservation {
         $this->created = $this->getDate();
     }
 
+
+
     private function getDate () {
         return date('Y-m-d', time());
     }
