@@ -10,7 +10,7 @@ class reservation {
     public $created;
 
     public function __construct() {
-        $this->name = $_POST['name'];
+        $this->name = $this->setName($_POST['name']);
         $this->email = $_POST['email'];
         $this->datetime = $_POST['datetime'];
         $this->city = $_POST['city'];
@@ -18,7 +18,13 @@ class reservation {
         $this->created = $this->getDate();
     }
 
+    public function setName (string $name) {
+        return $name;
+    }
 
+    public function setEmail (string $email) {
+        // strpos
+    }
 
     private function getDate () {
         return date('Y-m-d', time());
