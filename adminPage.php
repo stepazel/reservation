@@ -1,4 +1,7 @@
 <?php
+if (!isset($_GET['pageID'])) {
+    header('Location: adminPage.php?pageID=1');
+}
 session_start();
 require 'classes/database.php';
 require 'classes/admin.php';

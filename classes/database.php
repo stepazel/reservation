@@ -35,7 +35,7 @@ class database {
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
             return $developerDbHost;
         }
-        if ($_SERVER['HTTP_HOST'] == 'raml.cz') {
+        if ($_SERVER['HTTP_HOST'] == 'raml.cz' or $_SERVER['HTTP_HOST'] == 'test.raml.cz') {
             return $productionDbHost;
         }
         return 'si kokot';
@@ -47,7 +47,7 @@ class database {
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
             return $developerDb;
         }
-        if ($_SERVER['HTTP_HOST'] == 'raml.cz') {
+        if ($_SERVER['HTTP_HOST'] == 'raml.cz' or $_SERVER['HTTP_HOST'] == 'test.raml.cz') {
             return $productionDb;
         }
         return 'si kokot';
@@ -57,7 +57,7 @@ class database {
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
             return 'root';
         }
-        if ($_SERVER['HTTP_HOST'] == 'raml.cz') {
+        if ($_SERVER['HTTP_HOST'] == 'raml.cz' or $_SERVER['HTTP_HOST'] == 'test.raml.cz') {
             return 'a225105_raml';
         }
         return 'kamo neco je spatne';
@@ -67,7 +67,7 @@ class database {
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
             return '';
         }
-        if ($_SERVER['HTTP_HOST'] == 'raml.cz') {
+        if ($_SERVER['HTTP_HOST'] == 'raml.cz' or $_SERVER['HTTP_HOST'] == 'test.raml.cz') {
             return 'Stephan123!';
         }
     }
