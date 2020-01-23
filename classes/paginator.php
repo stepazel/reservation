@@ -18,6 +18,7 @@ class paginator extends admin {
     }
 
 
+
     public function displayLinks () {
         $numberOfResults = database::query('SELECT COUNT(*) FROM reservationinfo')->fetchAll();
         $numberOfLinks = ceil(intval($numberOfResults['0']['COUNT(*)']) / $this->resultsPerPage);
