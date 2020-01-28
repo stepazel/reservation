@@ -1,7 +1,7 @@
 <?php
 
 
-class filter {
+class FilterData {
     private $filterName;
     private $filterEmail;
     private $filterEventDateFrom;
@@ -22,47 +22,36 @@ class filter {
         $this->filterApproved = $_POST['filterApproved'];
     }
 
-    public function getFilterName () {
+    public function getFilterName() {
         return $this->filterName;
     }
 
-    public function getFilterEmail () {
+    public function getFilterEmail() {
         return $this->filterEmail;
     }
 
-    public function getFilterEventDateFrom () {
+    public function getFilterEventDateFrom() {
         return $this->filterEventDateFrom;
     }
 
-    public function getFilterEventDateTo () {
+    public function getFilterEventDateTo() {
         return $this->filterEventDateTo;
     }
 
-    public function getFilterPlace () {
+    public function getFilterPlace() {
         return $this->filterPlace;
     }
 
-    public function getFilterCreatedDateFrom () {
+    public function getFilterCreatedDateFrom() {
         return $this->filterCreatedDateFrom;
     }
 
-    public function getFilterCreatedDateTo () {
+    public function getFilterCreatedDateTo() {
         return $this->filterCreatedDateTo;
     }
 
-    public function getFilterApproved () {
+    public function getFilterApproved() {
         return $this->filterApproved;
     }
-
-    public function getFilterData () {
-        $data = database::query('SELECT * FROM reservationinfo WHERE name LIKE ? AND email LIKE ? AND datetime BETWEEN ? AND ?
-                AND place LIKE ? AND approved LIKE ? AND created BETWEEN ? AND ?',
-            array('%'.$this->getFilterName().'%', '%'.$this->getFilterEmail().'%', '%'.$this->getFilterEventDateFrom().'%',
-                '%'.$this->getFilterEventDateTo().'%', '%'.$this->getFilterPlace().'%', '%'.$this->getFilterApproved().'%',
-                '%'.$this->getFilterCreatedDateFrom().'%', '%'.$this->getFilterCreatedDateTo().'%'))->fetchAll();
-        return $data;
-    }
-
-
 }
 

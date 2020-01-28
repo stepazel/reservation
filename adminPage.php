@@ -79,10 +79,9 @@ $admin->updateApproved();
             </tr>
         </thead>
         <tbody> <?php $adminPaginator->displayResults();
-
-        $filter = new filter();
-        $filter->getFilterData();
-
+        $filterData = new FilterData();
+        $filter = new Filter($filterData);
+        echo $filter->test();
         ?>
 
 
