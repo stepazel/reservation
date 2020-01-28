@@ -81,7 +81,6 @@ $admin->updateApproved();
         <tbody> <?php $adminPaginator->displayResults();
         $filterData = new FilterData();
         $filter = new Filter($filterData);
-        echo $filter->test();
         ?>
 
 
