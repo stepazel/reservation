@@ -78,7 +78,14 @@ $admin->updateApproved();
                 </td>
             </tr>
         </thead>
-        <tbody> <?php $adminPaginator->displayResults();
+        <tbody> <?php
+        foreach ($adminPaginator->displayResults() as $array => $value) {
+            echo '<tr><td>' . $value['name'] . '</td><td>' . $value['email'] . '</td><td>' . $value['datetime'] . '</td>
+                    <td>' . $value['place'] . '</td><td>' . $value['created'] . '</td><td>' . $value['approved'] . '</td>
+                    <td><a href="adminPage.php?id=' . $value['id'] . '&app=1&pageID=' . $_GET['pageID'] . '">Schválit</a> / 
+                    <a href="adminPage.php?id=' . $value['id'] . '&app=0&pageID=' . $_GET['pageID'] . '">Zamítnout</a></td></tr>';
+        }
+        echo '</tbody></table></div>';
         $filterData = new FilterData();
         $filter = new Filter($filterData);
         ?>
