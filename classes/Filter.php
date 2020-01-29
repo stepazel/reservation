@@ -35,6 +35,9 @@ class Filter {
         if (substr($this->query, -6) === 'WHERE ') {
             $this->query = 'SELECT * FROM reservationinfo';
         }
+        if (substr($this->query, -4) === 'AND ') {
+            $this->query = (substr_replace($this->query, '', -5));//vyresit and na konci
+        }
         return $this->query;
     }
 

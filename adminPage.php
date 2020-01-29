@@ -88,6 +88,7 @@ $admin->updateApproved();
         echo '</tbody></table></div>';
         $filterData = new FilterData();
         $filter = new Filter($filterData);
+        var_dump($filter->getQuery());
         ?>
 
 

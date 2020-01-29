@@ -14,16 +14,20 @@ class paginator {
     const resultsPerPage = 3;
 
     public function displayLinks () {
-        $numberOfResults = database::query('SELECT COUNT(*) FROM reservationinfo')->fetchAll();
-        $numberOfLinks = ceil(intval($numberOfResults['0']['COUNT(*)']) / paginator::resultsPerPage);
+        $filterData = new FilterData();
+        $filterLinks = new Filter($filterData);
+        $numberOfResults = database::query(str_replace('*', 'COUNT(*)', $filterLinks->getQuery()))->fetch();
+        $numberOfLinks = ceil($numberOfResults['0'] / paginator::resultsPerPage);
         for ($this->pageID = 1; $this->pageID <= $numberOfLinks; $this->pageID++) {
             echo '<a href="adminPage.php?pageID='.$this->pageID.'">' .$this->pageID. '</a> ';
         }
     }
 
     public function displayResults () {
+        $filterData = new FilterData();
+        $filterResults = new Filter($filterData);
         if (isset($_GET['pageID'])) {
-            return $table = database::query("SELECT * FROM reservationinfo LIMIT " . ($_GET['pageID'] - 1) * paginator::resultsPerPage . '
+            return $table = database::query( $filterResults->getQuery() ." LIMIT " . ($_GET['pageID'] - 1) * paginator::resultsPerPage . '
             , ' . paginator::resultsPerPage)->fetchAll(PDO::FETCH_NAMED);
         }
         return false;
