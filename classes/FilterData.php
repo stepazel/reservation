@@ -12,14 +12,16 @@ class FilterData {
     private $filterApproved;
 
     public function __construct() {
-        $this->filterName = $_POST['filterName'];
-        $this->filterEmail = $_POST['filterEmail'];
-        $this->filterEventDateFrom = $_POST['filterEventDateFrom'];
-        $this->filterEventDateTo = $_POST['filterEventDateTo'];
-        $this->filterPlace = $_POST['filterPlace'];
-        $this->filterCreatedDateFrom = $_POST['filterCreatedDateFrom'];
-        $this->filterCreatedDateTo = $_POST['filterCreatedDateTo'];
-        $this->filterApproved = $_POST['filterApproved'];
+        if ($_POST) {
+            $this->filterName = $_POST['filterName'];
+            $this->filterEmail = $_POST['filterEmail'];
+            $this->filterEventDateFrom = $_POST['filterEventDateFrom'];
+            $this->filterEventDateTo = $_POST['filterEventDateTo'];
+            $this->filterPlace = $_POST['filterPlace'];
+            $this->filterCreatedDateFrom = $_POST['filterCreatedDateFrom'];
+            $this->filterCreatedDateTo = $_POST['filterCreatedDateTo'];
+            $this->filterApproved = $_POST['filterApproved'];
+        }
     }
 
     public function getFilterName() {

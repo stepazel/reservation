@@ -7,16 +7,21 @@ require 'classes/database.php';
 require 'classes/admin.php';
 require 'classes/paginator.php';
 database::connect(database::selectHost(), database::selectUser(), database::selectPassword(), database::selectDatabase());
-$admin = new admin();
-$adminPaginator = new paginator(3);
-$admin->checkLogin('reservationLogin.php');
 mb_internal_encoding('UTF-8');
-
-
-
+$admin = new admin();
+$adminPaginator = new paginator();
+$admin->checkLogin('reservationLogin.php');
+$filterData = new FilterData();
+$filter = new Filter($filterData);
 $admin->updateApproved();
 
-
+if (!$_POST) {
+    if (!$_SESSION['filterQuery']) {
+        $_SESSION['filterQuery'] = $filter->getQuery();
+    }
+} else {
+    $_SESSION['filterQuery'] = $filter->getQuery();
+}
 ?>
 <html>
 <head>
@@ -86,9 +91,6 @@ $admin->updateApproved();
                     <a href="adminPage.php?id=' . $value['id'] . '&app=0&pageID=' . $_GET['pageID'] . '">Zamítnout</a></td></tr>';
         }
         echo '</tbody></table></div>';
-        $filterData = new FilterData();
-        $filter = new Filter($filterData);
-        var_dump($filter->getQuery());
         ?>
 
 
